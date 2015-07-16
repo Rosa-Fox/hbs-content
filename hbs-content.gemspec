@@ -5,7 +5,7 @@ require 'hbs_content/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "hbs-content"
-  spec.version       = Hbs::Content::VERSION
+  spec.version       = HbsContent::VERSION
   spec.authors       = ["Najaf Ali"]
   spec.email         = ["ali.najaf@gmail.com"]
 
