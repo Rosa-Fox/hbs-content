@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Najaf Ali']
   spec.email         = ['ali.najaf@gmail.com']
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{A gem for accessing content related to Happy Bear Software}
+  spec.description   = %q{A gem for accessing content related to Happy Bear Software. This probably won't be very useful for anyone outside Happy Bear Software}
+  spec.homepage      = "https://github.com/happybearsoftware/hbs-content"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
   # delete this section to allow pushing this gem to any host.
