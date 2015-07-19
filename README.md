@@ -1,15 +1,15 @@
 # Hbs::Content
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/hbs/content`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A gem that provides a nice simple interface for getting Happy Bear Software
+content. Currently backed by contentful, but there's no reason we can't change
+out the underlying data provider.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'hbs-content'
+gem 'hbs-content', git: 'git@github.com:happybearsoftware/hbs-content.git'
 ```
 
 And then execute:
@@ -22,15 +22,59 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Configure the gem to use contentful (if you're using
+Rails, you probably want this in an initializer):
 
-## Development
+```ruby
+HbsContent.configure(:contentful, 
+  access_token: 'my access token',
+  space: 'space id'
+)
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake rspec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment. Run `bundle exec hbs-content` to use the gem in this directory, ignoring other installed copies of this gem.
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Get all people in Happy Bear Software:
 
-## Contributing
+```
+people = HbsContent::Person.all
+```
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/hbs-content.
+Iterate over them and show some info (see `lib/hbs_content/person.rb` for a
+full list of fields on `Person`).
+
+```ruby
+people.each do |person|
+  puts "#{person.full_name}, currently located in #{person.short_location}"
+end
+
+```
+
+`person.profile_photo_url` returns a `ContentfulImageUrl` which provides a fluent interface for building up an image URL.
+
+Get the image URL as it is like this:
+
+```ruby
+person.profile_photo_url.to_s
+#=> '//images.something.com/something.jpg'
+
+```
+
+[Contentful allows for URL-based image manipulation.](https://www.contentful.com/blog/2014/08/14/do-more-with-images-on-contentful-platform/) Add a width and a height to the image URL like this:
+
+```ruby
+person.profile_photo_url.width(100).height(100).to_s
+#=> '//images.something.com/something.jpg?w=100&h=100'
+
+```
+
+Add quality value like this:
+
+```ruby
+person.profile_photo_url.quality(3).to_s
+#=> '//images.something.com/something.jpg?q=3'
+```
+
+For more options, see the above linked blog post and the class definition of `ContentfulImageUrl`.
+
+
 
