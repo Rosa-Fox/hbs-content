@@ -9,7 +9,7 @@ out the underlying data provider.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'hbs-content', git: 'git@github.com:happybearsoftware/hbs-content.git'
+gem 'hbs-content', '0.2.0', git: 'git@github.com:happybearsoftware/hbs-content.git'
 ```
 
 And then execute:
