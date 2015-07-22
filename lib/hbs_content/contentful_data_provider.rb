@@ -31,6 +31,7 @@ module HbsContent
       case type
       when :person
         Person.new.tap do |p|
+          p.id                = entry.id
           p.full_name         = fields[:fullName]
           p.title             = fields[:title]
           p.home_address      = fields[:homeAddress]
