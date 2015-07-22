@@ -33,6 +33,8 @@ HbsContent.configure(:contentful,
 
 ```
 
+## People
+
 Get all people in Happy Bear Software:
 
 ```
@@ -48,6 +50,17 @@ people.each do |person|
 end
 
 ```
+
+Each instance of `Person` has a unique `id`. You can get at this id by calling `person.id`.
+
+Find a person using an `id` with `Person.find(id)`:
+
+```ruby
+# Get Ali
+ali = HbsContent::Person.find('5UsGduZybSOMk0IIeUuoY6')
+```
+
+### Profile photo's
 
 `person.profile_photo_url` returns a `ContentfulImageUrl` which provides a fluent interface for building up an image URL.
 
