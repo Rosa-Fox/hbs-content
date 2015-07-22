@@ -18,6 +18,11 @@ module HbsContent
       end
     end
 
+    def find(type, id)
+      entry = @client.entry(id)
+      convert(type, entry)
+    end
+
     def people_for_homepage_team_list
       entries = @client.entry(ENTRY_IDS[:homepage_team_list]).fields[:people].map(&:resolve)
       type    = :person

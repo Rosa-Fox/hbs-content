@@ -14,6 +14,10 @@ module HbsContent
         provider.people_for_homepage_team_list
       end
 
+      def find(id)
+        provider.find(:person, id)
+      end
+
       private
       def provider
         HbsContent.provider
